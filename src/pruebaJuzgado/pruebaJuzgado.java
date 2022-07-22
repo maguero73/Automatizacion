@@ -48,7 +48,8 @@ public class pruebaJuzgado {
 	
 	  		System.setProperty("webdriver.gecko.driver", "D:\\Descargas\\Selenium\\geckodriver.exe");
 	
-	  		WebDriver driver = new FirefoxDriver();
+	  		//WebDriver driver = new FirefoxDriver();
+	  	//	tengo el driver de chrome
 	  		
 	
 	  		driver.get("https://authhomo.afip.gob.ar/contribuyente_/login.xhtml");
