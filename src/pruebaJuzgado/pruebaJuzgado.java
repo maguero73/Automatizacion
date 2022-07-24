@@ -71,9 +71,11 @@ public class pruebaJuzgado {
     driver.findElement(By.xpath("//span[contains(.,' Mis Servicios')]")).click();
     Thread.sleep(5000);
     driver.findElement(By.xpath("//h4[contains(.,\'RELI-CONTRIBUYENTE\')]")).click();
-    vars.put("win272", waitForWindow(2000));
-    driver.switchTo().window(vars.get("win272").toString());
-    driver.findElement(By.cssSelector("#divContratos .panel-heading")).click();
+    Thread.sleep(5000);
+    //driver.switchTo().window(vars.get("win272").toString());
+    driver.findElement(By.xpath("//p[contains(.,'Registro de Locaciones de Inmuebles - RELI')]")).click();
+    Thread.sleep(9000);
+    driver.findElement(By.xpath("//div[@id='divContratos']/a/div")).click();
     driver.findElement(By.id("modalMensajeBtnOK")).click();
     driver.findElement(By.id("rbUrbano")).click();
     driver.findElement(By.cssSelector(".well > .row > .col-md-10")).click();
