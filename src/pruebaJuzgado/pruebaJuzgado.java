@@ -40,7 +40,7 @@ public class pruebaJuzgado {
   
     //js = (JavascriptExecutor) driver;
     //vars = new HashMap<String, Object>();
-    System.setProperty("webdriver.chrome.driver", "/home/mariano/Downloads/Selenium Libraries/chromedriver");
+    System.setProperty("webdriver.chrome.driver", "D:\\Descargas\\chromedriver_win32\\chromedriver.exe");
     driver = new ChromeDriver();
   }
   @After
