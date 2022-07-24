@@ -55,14 +55,10 @@ public class pruebaJuzgado {
 	  		driver.manage().window().setSize(new Dimension(1366, 728));
 	  		driver.findElement(By.id("F1:username")).sendKeys("20310607992");
 	  		driver.findElement(By.id("F1:btnSiguiente")).click();
-	  		Thread.sleep(2000);
 	  		driver.findElement(By.id("F1:password")).sendKeys("Mariano321");
 	  		driver.findElement(By.id("F1:btnIngresar")).click();
+	  		driver.findElement(By.xpath("//span[contains(.,' Mis Servicios')]")).click();
 	  		Thread.sleep(5000);
-	  		driver.findElement(By.cssSelector(".h6:nth-child(3) .web-only")).click();
-	  		Thread.sleep(2000);
-	  		//vars.put("window_handles", driver.getWindowHandles());
-	  		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 	  		driver.findElement(By.cssSelector(".col-lg-4:nth-child(17) .bold")).click();
 	  		Thread.sleep(6000);
 	  		//vars.put("win9275", waitForWindow(2000));
