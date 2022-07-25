@@ -56,6 +56,7 @@ public class pruebaJuzgado {
 	  		driver.findElement(By.id("F1:username")).sendKeys("20310607992");
 	  		driver.findElement(By.id("F1:btnSiguiente")).click();
 	  		driver.findElement(By.id("F1:password")).sendKeys("Mariano321");
+	  		//Thread.sleep(5000);
 	  		driver.findElement(By.id("F1:btnIngresar")).click();
 	  		driver.findElement(By.xpath("//span[contains(.,' Mis Servicios')]")).click();
 	  		Thread.sleep(5000);
