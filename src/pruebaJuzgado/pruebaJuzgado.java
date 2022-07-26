@@ -62,20 +62,23 @@ public class pruebaJuzgado {
   }
   @Test
   public void reliConsulta() throws InterruptedException {
-    driver.get("https://auth.afip.gob.ar/contribuyente_/login.xhtml");
+    driver.get("https://authhomo.afip.gov.ar/contribuyente_/login.xhtml");
+    Thread.sleep(8000);
     driver.manage().window().setSize(new Dimension(1294, 741));
     driver.findElement(By.id("F1:username")).sendKeys("20310607992");
     driver.findElement(By.id("F1:btnSiguiente")).click();
-    driver.findElement(By.id("F1:password")).sendKeys("M4r14n0w23");
+    driver.findElement(By.id("F1:password")).sendKeys("Mariano321");
     driver.findElement(By.id("F1:btnIngresar")).click();
+    Thread.sleep(5000);
     driver.findElement(By.xpath("//span[contains(.,' Mis Servicios')]")).click();
-    Thread.sleep(5000);
-    driver.findElement(By.xpath("//h4[contains(.,\'RELI-CONTRIBUYENTE\')]")).click();
-    Thread.sleep(5000);
-    //driver.switchTo().window(vars.get("win272").toString());
-    driver.findElement(By.xpath("//p[contains(.,'Registro de Locaciones de Inmuebles - RELI')]")).click();
-    Thread.sleep(9000);
-    driver.findElement(By.xpath("//div[@id='divContratos']/a/div")).click();
+    Thread.sleep(12000);
+    driver.findElement(By.xpath("//h4[contains(.,\'RELI-JUZGADOS\')]")).click();
+    Thread.sleep(12000);
+    driver.switchTo().window(vars.get("win272").toString());
+    driver.findElement(By.xpath("////div[@id='ContentPlaceHolder1_divYoMismoSI']/a/div/div[2]/h2")).click();
+   // driver.findElement(By.xpath("//div[@id='divContratos']/a/div")).click();
+    Thread.sleep(12000);
+    //driver.findElement(By.xpath("//h3')]")).click();
     driver.findElement(By.id("modalMensajeBtnOK")).click();
     driver.findElement(By.id("rbUrbano")).click();
     driver.findElement(By.cssSelector(".well > .row > .col-md-10")).click();
