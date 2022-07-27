@@ -14,6 +14,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.Dimension;
@@ -35,19 +36,21 @@ import java.time.Duration;
 
 
 public class pruebaJuzgado {
-
-
-
-
-
 @Before
   
+
+
   public void setUp() {
   
     //js = (JavascriptExecutor) driver;
     //vars = new HashMap<String, Object>();
     System.setProperty("webdriver.chrome.driver", "D:\\Descargas\\chromedriver_win32\\chromedriver.exe");
     driver = new ChromeDriver();
+    
+    ChromeOptions options = new ChromeOptions();
+	options.addArguments("--ignore-certificate-errors");
+	driver = new ChromeDriver(options);
+
   }
   
   
