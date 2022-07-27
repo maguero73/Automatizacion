@@ -19,7 +19,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Sleeper;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Alert;
@@ -27,15 +29,19 @@ import org.openqa.selenium.Keys;
 import java.util.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Clock;
+import java.time.Duration;
 
 
 
 public class pruebaJuzgado {
-  private WebDriver driver;
-  private Map<String, Object> vars;
-  int segundosAEsperar = 10;
-  JavascriptExecutor js;
-  @Before
+
+
+
+
+
+@Before
+  
   public void setUp() {
   
     //js = (JavascriptExecutor) driver;
@@ -43,6 +49,8 @@ public class pruebaJuzgado {
     System.setProperty("webdriver.chrome.driver", "D:\\Descargas\\chromedriver_win32\\chromedriver.exe");
     driver = new ChromeDriver();
   }
+  
+  
   @After
   public void tearDown() {
    // driver.quit();
@@ -61,6 +69,8 @@ public class pruebaJuzgado {
     return whNow.iterator().next();
   }
   @Test
+  
+  
   public void reliConsulta() throws InterruptedException {
     driver.get("https://authhomo.afip.gov.ar/contribuyente_/login.xhtml");
     Thread.sleep(8000);
@@ -69,16 +79,15 @@ public class pruebaJuzgado {
     driver.findElement(By.id("F1:btnSiguiente")).click();
     driver.findElement(By.id("F1:password")).sendKeys("Mariano321");
     driver.findElement(By.id("F1:btnIngresar")).click();
-    Thread.sleep(5000);
+    Thread.sleep(8000);
     driver.findElement(By.xpath("//span[contains(.,' Mis Servicios')]")).click();
     Thread.sleep(12000);
     driver.findElement(By.xpath("//h4[contains(.,\'RELI-JUZGADOS\')]")).click();
     Thread.sleep(12000);
-    driver.switchTo().window(vars.get("win272").toString());
-    driver.findElement(By.xpath("////div[@id='ContentPlaceHolder1_divYoMismoSI']/a/div/div[2]/h2")).click();
-   // driver.findElement(By.xpath("//div[@id='divContratos']/a/div")).click();
+    vars.put("win5390", waitForWindow(2000));
+    driver.switchTo().window(vars.get("win5390").toString());
+    driver.findElement(By.xpath("//div[@id='ContentPlaceHolder1_divYoMismoSI']/a/div/div[2]/h2")).click();
     Thread.sleep(12000);
-    //driver.findElement(By.xpath("//h3')]")).click();
     driver.findElement(By.id("modalMensajeBtnOK")).click();
     driver.findElement(By.id("rbUrbano")).click();
     driver.findElement(By.cssSelector(".well > .row > .col-md-10")).click();
@@ -142,4 +151,11 @@ public class pruebaJuzgado {
     }
     driver.findElement(By.id("modalMensajeBtnContinuar")).click();
   }
+  
+  //private static final long DEFAULT_SLEEP_TIMEOUT = 0;
+  private WebDriver driver;
+  private Map<String, Object> vars;
+  //int segundosAEsperar = 10;
+  JavascriptExecutor js;
+
 }
