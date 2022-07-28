@@ -11,6 +11,7 @@ import org.openqa.selenium.*;
 import java.util.concurrent.TimeUnit;
 import java.util.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.common.exceptions.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -36,9 +37,8 @@ import java.time.Duration;
 
 
 public class pruebaJuzgado {
-@Before
+@Before //antes de...
   
-
 
   public void setUp() {
   
@@ -54,44 +54,61 @@ public class pruebaJuzgado {
   }
   
   
-  @After
+  @After //después
   public void tearDown() {
-   // driver.quit();
+    driver.quit();
   }
+ 
   public String waitForWindow(int timeout) {
     try {
-      Thread.sleep(timeout);
+     Thread.sleep(timeout);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
-    Set<String> whNow = driver.getWindowHandles();
-    Set<String> whThen = (Set<String>) vars.get("window_handles");
-    if (whNow.size() > whThen.size()) {
-      whNow.removeAll(whThen);
-    }
+    Set<String> whNow = driver.getWindowHandles();	
+	Set<String> whThen = (Set<String>) vars.get("window_handles");
+  if (whNow.size() > whThen.size()) {
+     whNow.removeAll(whThen);
+   }
     return whNow.iterator().next();
   }
   @Test
   
   
   public void reliConsulta() throws InterruptedException {
+	  
+	  driver.get("https://authhomo.afip.gob.ar/contribuyente_/login.xhtml");
+	    driver.manage().window().setSize(new Dimension(1295, 728));
+	    driver.findElement(By.id("F1:username")).sendKeys("20310607992");
+	    driver.findElement(By.id("F1:btnSiguiente")).click();
+	    driver.findElement(By.id("F1:password")).sendKeys("Mariano321");
+	    driver.findElement(By.id("F1:btnIngresar")).click();
+	    driver.findElement(By.cssSelector(".h6:nth-child(3) .web-only")).click();
+	    driver.findElement(By.cssSelector("html")).click();
+	  //  vars.put("window_handles", driver.getWindowHandles());
+	    driver.findElement(By.cssSelector(".col-lg-4:nth-child(16) .bold")).click();
+	    vars.put("win7722", waitForWindow(2000));
+	    driver.switchTo().window(vars.get("win7722").toString());
+	    driver.findElement(By.cssSelector("#\\32 0083666413 .text-uppercase")).click();
+	    driver.findElement(By.cssSelector(".fa-file-text")).click();
+	    driver.findElement(By.id("modalMensajeBtnOK")).click();
+	  
+  /*
     driver.get("https://authhomo.afip.gov.ar/contribuyente_/login.xhtml");
-    Thread.sleep(8000);
-    driver.manage().window().setSize(new Dimension(1294, 741));
+    Thread.sleep(2000);
+    driver.manage().window().setSize(new Dimension(1295, 728));
     driver.findElement(By.id("F1:username")).sendKeys("20310607992");
     driver.findElement(By.id("F1:btnSiguiente")).click();
     driver.findElement(By.id("F1:password")).sendKeys("Mariano321");
     driver.findElement(By.id("F1:btnIngresar")).click();
-    Thread.sleep(8000);
+    Thread.sleep(2000);
     driver.findElement(By.xpath("//span[contains(.,' Mis Servicios')]")).click();
-    Thread.sleep(12000);
+    Thread.sleep(2000);
     driver.findElement(By.xpath("//h4[contains(.,\'RELI-JUZGADOS\')]")).click();
-    Thread.sleep(12000);
-    vars.put("win5390", waitForWindow(2000));
-    driver.switchTo().window(vars.get("win5390").toString());
-    driver.findElement(By.xpath("//div[@id='ContentPlaceHolder1_divYoMismoSI']/a/div/div[2]/h2")).click();
-    Thread.sleep(12000);
-    driver.findElement(By.id("modalMensajeBtnOK")).click();
+    TimeUnit.SECONDS.sleep(30);
+    driver.findElement(By.cssSelector(".text-primary:nth-child(2)")).click();
+  
+    */
     driver.findElement(By.id("rbUrbano")).click();
     driver.findElement(By.cssSelector(".well > .row > .col-md-10")).click();
     driver.findElement(By.cssSelector(".well > .row > .col-md-10")).click();
@@ -112,6 +129,7 @@ public class pruebaJuzgado {
       Actions builder = new Actions(driver);
       builder.moveToElement(element, 0, 0).perform();
     }
+    
     driver.findElement(By.id("txtCuitResidente")).click();
     driver.findElement(By.id("txtCuitResidente")).sendKeys("20310607982");
     driver.findElement(By.id("txtCuitResidenteRZ")).click();
