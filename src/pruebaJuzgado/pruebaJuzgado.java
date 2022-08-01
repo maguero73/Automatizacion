@@ -36,49 +36,38 @@ import java.time.Duration;
 
 
 public class pruebaJuzgado {
+	
+	By registrerLinkLocator=By.linkText("Mis Servicios");
+	
+	
 @Before //antes de...
   
 
   public void setUp() {
   
-    //js = (JavascriptExecutor) driver;
-    //vars = new HashMap<String, Object>();
     System.setProperty("webdriver.chrome.driver", "D:\\Descargas\\chromedriver_win32\\chromedriver.exe");
     driver = new ChromeDriver();
-    
-
     
     ChromeOptions options = new ChromeOptions();
 	options.addArguments("--ignore-certificate-errors");
 	driver = new ChromeDriver(options);
+	driver.manage().window().maximize();
+	driver.get("https://authhomo.afip.gob.ar/contribuyente_/login.xhtml");
 
   }
   
   
   @After //después
   public void tearDown() {
-    driver.quit();
+   // driver.quit();
   }
  
-  public String waitForWindow(int timeout) {
-    try {
-     Thread.sleep(timeout);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
-    Set<String> whNow = driver.getWindowHandles();	
-	Set<String> whThen = (Set<String>) vars.get("window_handles");
-  if (whNow.size() > whThen.size()) {
-     whNow.removeAll(whThen);
-   }
-    return whNow.iterator().next();
-  }
   @Test
   
   
   public void reliConsulta() throws InterruptedException {
 	  
-	    driver.get("https://authhomo.afip.gob.ar/contribuyente_/login.xhtml");
+	   
 	    driver.manage().window().setSize(new Dimension(1295, 728));
 	    driver.findElement(By.id("F1:username")).sendKeys("20310607992");
 	    driver.findElement(By.id("F1:btnSiguiente")).click();
@@ -86,30 +75,15 @@ public class pruebaJuzgado {
 	    driver.findElement(By.id("F1:btnIngresar")).click();
 	    driver.findElement(By.cssSelector(".h6:nth-child(3) .web-only")).click();
 	    driver.findElement(By.cssSelector("html")).click();
-	   // vars.put("window_handles", driver.getWindowHandles());
+	    Thread.sleep(2000);
 	    driver.findElement(By.cssSelector(".col-lg-4:nth-child(16) .bold")).click();
 	    //vars.put("win7722", waitForWindow(2000));
 	    //driver.switchTo().window(vars.get("win7722").toString());
-	    driver.findElement(By.cssSelector("#\\32 0083666413 .text-uppercase")).click();
+	    driver.findElement(By.cssSelector("//a/div/div[2]/p[2]")).click();
 	    driver.findElement(By.cssSelector(".fa-file-text")).click();
 	    driver.findElement(By.id("modalMensajeBtnOK")).click();
 	  
-  /*
-    driver.get("https://authhomo.afip.gov.ar/contribuyente_/login.xhtml");
-    Thread.sleep(2000);
-    driver.manage().window().setSize(new Dimension(1295, 728));
-    driver.findElement(By.id("F1:username")).sendKeys("20310607992");
-    driver.findElement(By.id("F1:btnSiguiente")).click();
-    driver.findElement(By.id("F1:password")).sendKeys("Mariano321");
-    driver.findElement(By.id("F1:btnIngresar")).click();
-    Thread.sleep(2000);
-    driver.findElement(By.xpath("//span[contains(.,' Mis Servicios')]")).click();
-    Thread.sleep(2000);
-    driver.findElement(By.xpath("//h4[contains(.,\'RELI-JUZGADOS\')]")).click();
-    TimeUnit.SECONDS.sleep(30);
-    driver.findElement(By.cssSelector(".text-primary:nth-child(2)")).click();
-  
-    */
+
     driver.findElement(By.id("rbUrbano")).click();
     driver.findElement(By.cssSelector(".well > .row > .col-md-10")).click();
     driver.findElement(By.cssSelector(".well > .row > .col-md-10")).click();
@@ -174,10 +148,7 @@ public class pruebaJuzgado {
     driver.findElement(By.id("modalMensajeBtnContinuar")).click();
   }
   
-  //private static final long DEFAULT_SLEEP_TIMEOUT = 0;
   private WebDriver driver;
-  private Map<String, Object> vars;
-  //int segundosAEsperar = 10;
-  JavascriptExecutor js;
+
 
 }
