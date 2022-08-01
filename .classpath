@@ -86,7 +86,7 @@
 	<classpathentry kind="lib" path="D:/DATOS/Laboral/Funcional/RELI/Casos de Prueba/SELENIUM IDE/chrome/selenium-java-4.3.0/lib/opentelemetry-semconv-1.15.0-alpha.jar"/>
 	<classpathentry kind="lib" path="D:/DATOS/Laboral/Funcional/RELI/Casos de Prueba/SELENIUM IDE/chrome/selenium-java-4.3.0/lib/reactive-streams-1.0.4.jar"/>
 	<classpathentry kind="lib" path="D:/DATOS/Laboral/Funcional/RELI/Casos de Prueba/SELENIUM IDE/chrome/selenium-java-4.3.0/lib/slf4j-api-1.7.36.jar"/>
-	<classpathentry kind="lib" path="D:/Descargas/junit-4.13.2.jar"/>
+	<classpathentry kind="lib" path="D:/Descargas/junit-4.13.2.jar" sourcepath="D:/Descargas/junit-4.13.2-sources.jar"/>
 	<classpathentry kind="lib" path="D:/Descargas/hamcrest-core.jar/hamcrest-core.jar"/>
 	<classpathentry kind="lib" path="D:/Descargas/junit.jar"/>
 	<classpathentry kind="lib" path="D:/Descargas/hamcrest-core-1.3.jar"/>

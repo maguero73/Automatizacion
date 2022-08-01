@@ -11,7 +11,6 @@ import org.openqa.selenium.*;
 import java.util.concurrent.TimeUnit;
 import java.util.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.common.exceptions.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -47,6 +46,8 @@ public class pruebaJuzgado {
     System.setProperty("webdriver.chrome.driver", "D:\\Descargas\\chromedriver_win32\\chromedriver.exe");
     driver = new ChromeDriver();
     
+
+    
     ChromeOptions options = new ChromeOptions();
 	options.addArguments("--ignore-certificate-errors");
 	driver = new ChromeDriver(options);
@@ -77,7 +78,7 @@ public class pruebaJuzgado {
   
   public void reliConsulta() throws InterruptedException {
 	  
-	  driver.get("https://authhomo.afip.gob.ar/contribuyente_/login.xhtml");
+	    driver.get("https://authhomo.afip.gob.ar/contribuyente_/login.xhtml");
 	    driver.manage().window().setSize(new Dimension(1295, 728));
 	    driver.findElement(By.id("F1:username")).sendKeys("20310607992");
 	    driver.findElement(By.id("F1:btnSiguiente")).click();
@@ -85,10 +86,10 @@ public class pruebaJuzgado {
 	    driver.findElement(By.id("F1:btnIngresar")).click();
 	    driver.findElement(By.cssSelector(".h6:nth-child(3) .web-only")).click();
 	    driver.findElement(By.cssSelector("html")).click();
-	  //  vars.put("window_handles", driver.getWindowHandles());
+	   // vars.put("window_handles", driver.getWindowHandles());
 	    driver.findElement(By.cssSelector(".col-lg-4:nth-child(16) .bold")).click();
-	    vars.put("win7722", waitForWindow(2000));
-	    driver.switchTo().window(vars.get("win7722").toString());
+	    //vars.put("win7722", waitForWindow(2000));
+	    //driver.switchTo().window(vars.get("win7722").toString());
 	    driver.findElement(By.cssSelector("#\\32 0083666413 .text-uppercase")).click();
 	    driver.findElement(By.cssSelector(".fa-file-text")).click();
 	    driver.findElement(By.id("modalMensajeBtnOK")).click();
