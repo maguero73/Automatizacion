@@ -40,7 +40,7 @@ public class pruebaJuzgado {
 	By registrerLinkLocator=By.linkText("Mis Servicios");
 	
 	
-@Before //antes de...
+@Before
   
 
   public void setUp() {
@@ -67,23 +67,27 @@ public class pruebaJuzgado {
   
   public void reliConsulta() throws InterruptedException {
 	  
-	   
-	    driver.manage().window().setSize(new Dimension(1295, 728));
 	    driver.findElement(By.id("F1:username")).sendKeys("20310607992");
 	    driver.findElement(By.id("F1:btnSiguiente")).click();
 	    driver.findElement(By.id("F1:password")).sendKeys("Mariano321");
 	    driver.findElement(By.id("F1:btnIngresar")).click();
 	    driver.findElement(By.cssSelector(".h6:nth-child(3) .web-only")).click();
-	    driver.findElement(By.cssSelector("html")).click();
-	    Thread.sleep(2000);
+	    Thread.sleep(5000);
+	    //driver.findElement(By.cssSelector("html")).click();
+	    Thread.sleep(5000);
 	    driver.findElement(By.cssSelector(".col-lg-4:nth-child(16) .bold")).click();
-	    //vars.put("win7722", waitForWindow(2000));
-	    //driver.switchTo().window(vars.get("win7722").toString());
-	    driver.findElement(By.cssSelector("//a/div/div[2]/p[2]")).click();
-	    driver.findElement(By.cssSelector(".fa-file-text")).click();
-	    driver.findElement(By.id("modalMensajeBtnOK")).click();
-	  
-
+	   // driver.findElement(By.xpath("//div[@class='media-body media-middle']/h2")).click();
+	   // driver.findElement(By.xpath("//div[@class='media-body media-middle']/h2")).click();
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("")));
+	  if (driver.findElement(By.xpath("//img[@src='frameworkAFIP/v1/img/logo_afip.png']")).isDisplayed()) {
+		  driver.findElement(By.xpath("//div[@class='media-body media-middle']h2")).click();
+	  }
+	  else {
+		  System.out.println("La imagen no fue encontrada en el Sitio");
+	  }
+		  
+/*
     driver.findElement(By.id("rbUrbano")).click();
     driver.findElement(By.cssSelector(".well > .row > .col-md-10")).click();
     driver.findElement(By.cssSelector(".well > .row > .col-md-10")).click();
@@ -146,6 +150,8 @@ public class pruebaJuzgado {
       builder.moveToElement(element, 0, 0).perform();
     }
     driver.findElement(By.id("modalMensajeBtnContinuar")).click();
+    
+    */
   }
   
   private WebDriver driver;
