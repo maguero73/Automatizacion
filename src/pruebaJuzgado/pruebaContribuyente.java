@@ -29,6 +29,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.Keys;
 import java.util.*;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Clock;
@@ -54,6 +56,9 @@ public class pruebaContribuyente {
 	//By falsoelseLocator = By.xpath("//a[@id='27363591715']/div/div[2]/h3");
 	By falsoelseLocator = By.xpath("//*[@id='27363591715']/div/div[2]/h3");
 	//By falsoelseLocator = By.cssSelector(".row:nth-child(3) .col:nth-child(3) .panel .media-body .text-uppercase");
+	By decla_contratoLocator = By.xpath("//*[@id=\"simple\"]");
+	By btn_contrato_nuevoLocator = By.id("modalMensajeBtnOK");
+	
 	
 	@Before
 	public void setUp() throws Exception {
@@ -65,7 +70,13 @@ public class pruebaContribuyente {
 		driver = new ChromeDriver(options);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get("https://authhomo.afip.gob.ar/contribuyente_/login.xhtml");
+		//driver.navigate().to("https://authhomo.afip.gob.ar/contribuyente_/login.xhtml");     
+		//Robot robot = new Robot();
+		//robot.keyPress(KeyEvent.VK_CONTROL);
+		//robot.keyPress(KeyEvent.VK_T);
+		//robot.keyRelease(KeyEvent.VK_CONTROL);
+		//robot.keyRelease(KeyEvent.VK_T);
+
 	}
 
 	@After
@@ -74,19 +85,19 @@ public class pruebaContribuyente {
 	}
 	
 	
-	@Test
+	//@Test
 	
-	public void openNewTabUsingJS() throws InterruptedException {
+	//public void openNewTabInChrome() {
+
 		
-		((JavascriptExecutor)driver).executeScript("windows.open()");
-		Thread.sleep(5000);
-		
-	}
-	
+	//}
+
+
 	
 	@Test
 	public void test() throws InterruptedException {
-		
+	
+	driver.get("https://authhomo.afip.gov.ar/contribuyente_/login.xhtml");	
 	driver.findElement(usernameLocator).sendKeys("20310607992");
 	driver.findElement(btnsiguienteLocator).click();
 	driver.findElement(passwordLocator).sendKeys("Mariano321");
@@ -101,8 +112,184 @@ public class pruebaContribuyente {
 	//driver.close();
 	driver.get("https://srvrome.homo.afip.gob.ar/fiscalizacion/reli/app/SelectUsuario.aspx");
 	Thread.sleep(2000);
+	((JavascriptExecutor)driver).executeScript("alert('Test')");
+	Thread.sleep(4000);
+	driver.switchTo().alert().accept();
+	Thread.sleep(4000);
+	driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
+	Thread.sleep(4000);
+	//String selectLinkOpeninNewTab = Keys.chord(Keys.CONTROL,Keys.RETURN); 
+	//driver.findElement(By.linkText("https://srvrome.homo.afip.gob.ar/fiscalizacion/reli/app/SelectUsuario.aspx")).sendKeys(selectLinkOpeninNewTab);
 	driver.findElement(falsoelseLocator).click();
-	
+	Thread.sleep(2000);
+	driver.get("https://srvrome.homo.afip.gob.ar/fiscalizacion/reli/app/contrato/DeclaracionContrato.aspx");
+	Thread.sleep(3000);
+	driver.findElement(decla_contratoLocator).click();
+	Thread.sleep(2000);
+	driver.findElement(btn_contrato_nuevoLocator).click();
+	driver.findElement(By.id("rbUrbano")).click();
+	Thread.sleep(2000);
+   // driver.findElement(By.id("modalMensajeBtnOK")).click();
+    Thread.sleep(2000);
+    driver.findElement(By.id("rbUrbano")).click();
+    Thread.sleep(2000);
+    driver.findElement(By.id("rbSubLocacionSi")).click();
+    Thread.sleep(2000);
+    driver.findElement(By.id("btnSiguiente")).click();
+    driver.findElement(By.id("rbLocador")).click();
+    driver.findElement(By.id("rbEnNombrePropio")).click();
+    driver.findElement(By.id("btnSiguiente")).click();
+    driver.findElement(By.cssSelector("#btnNuevoAgregarLocador > .fa")).click();
+    driver.findElement(By.id("rbResidenteNo")).click();
+    driver.findElement(By.id("txtCuitResidente")).click();
+    driver.findElement(By.id("txtPorcLocacion")).sendKeys("100");
+    driver.findElement(By.cssSelector("#footer-wait .col-md-12")).click();
+    driver.findElement(By.id("btnAgregarLocador")).click();
+    driver.findElement(By.id("btnSiguiente")).click();
+    driver.findElement(By.cssSelector(".fa-plus")).click();
+    {
+      WebElement element = driver.findElement(By.tagName("body"));
+      Actions builder = new Actions(driver);
+      builder.moveToElement(element, 0, 0).perform();
+    }
+    driver.findElement(By.id("btnSiguiente")).click();
+    driver.findElement(By.id("rbResidenteNo")).click();
+    driver.findElement(By.id("txtCuitResidente")).click();
+    driver.findElement(By.id("txtCuitResidente")).click();
+    driver.findElement(By.id("txtCuitResidente")).sendKeys("27111141776");
+    driver.findElement(By.id("btnAgregarInquilino")).click();
+    driver.findElement(By.id("btnAgregarInquilino")).click();
+    driver.findElement(By.id("btnSiguiente")).click();
+    driver.findElement(By.id("btnSiguiente")).click();
+    driver.findElement(By.id("txtCalle")).click();
+    driver.findElement(By.id("txtCalle")).sendKeys("peron");
+    driver.findElement(By.id("txtNumero")).sendKeys("777");
+    driver.findElement(By.id("txtPiso")).sendKeys("6");
+    driver.findElement(By.id("txtDepto")).sendKeys("C");
+    driver.findElement(By.id("cboProvincia")).click();
+    {
+      WebElement dropdown = driver.findElement(By.id("cboProvincia"));
+      dropdown.findElement(By.xpath("//option[. = 'BUENOS AIRES']")).click();
+    }
+    driver.findElement(By.id("cboPartido")).click();
+    {
+      WebElement dropdown = driver.findElement(By.id("cboPartido"));
+      dropdown.findElement(By.xpath("//option[. = 'Lanus']")).click();
+    }
+    driver.findElement(By.id("cboLocalidad")).click();
+    {
+      WebElement dropdown = driver.findElement(By.id("cboLocalidad"));
+      dropdown.findElement(By.xpath("//option[. = 'LANUS ESTE (1824)']")).click();
+    }
+    driver.findElement(By.id("btnSiguiente")).click();
+    driver.findElement(By.id("rbMultipleDomicilioNo")).click();
+    driver.findElement(By.id("cboTipoInmueble")).click();
+    {
+      WebElement dropdown = driver.findElement(By.id("cboTipoInmueble"));
+      dropdown.findElement(By.xpath("//option[. = 'Casa']")).click();
+    }
+    driver.findElement(By.id("cboDestino")).click();
+    {
+      WebElement dropdown = driver.findElement(By.id("cboDestino"));
+      dropdown.findElement(By.xpath("//option[. = 'Otros fines']")).click();
+    }
+    driver.findElement(By.id("btnSiguiente")).click();
+    {
+      WebElement element = driver.findElement(By.cssSelector("#dvFechaInicio .fa"));
+      Actions builder = new Actions(driver);
+      builder.moveToElement(element).perform();
+    }
+    driver.findElement(By.id("dtpFechaFin")).click();
+    driver.findElement(By.cssSelector("tr:nth-child(4) > .day:nth-child(5)")).click();
+    driver.findElement(By.id("dtpFechaCelebracion")).click();
+    driver.findElement(By.id("dtpFechaInicio")).click();
+    driver.findElement(By.cssSelector(".fa-plus")).click();
+    driver.findElement(By.id("rbModalidadDinero")).click();
+    driver.findElement(By.id("cboFrecuenciaPago")).click();
+    {
+      WebElement dropdown = driver.findElement(By.id("cboFrecuenciaPago"));
+      dropdown.findElement(By.xpath("//option[. = 'CUATRIMESTRAL']")).click();
+    }
+    driver.findElement(By.id("cboMedio")).click();
+    {
+      WebElement dropdown = driver.findElement(By.id("cboMedio"));
+      dropdown.findElement(By.xpath("//option[. = 'EFECTIVO']")).click();
+    }
+    driver.findElement(By.id("cboTipoMoneda")).click();
+    {
+      WebElement dropdown = driver.findElement(By.id("cboTipoMoneda"));
+      dropdown.findElement(By.xpath("//option[. = 'Pesos Argentinos']")).click();
+    }
+    driver.findElement(By.id("txtValorMonedaElegida")).click();
+    driver.findElement(By.id("txtValorMonedaElegida")).sendKeys("5000");
+    driver.findElement(By.id("btnAgregarModalidad")).click();
+    {
+      WebElement element = driver.findElement(By.id("btnAdjuntar"));
+      Actions builder = new Actions(driver);
+      builder.moveToElement(element).perform();
+    }
+    {
+      WebElement element = driver.findElement(By.tagName("body"));
+      Actions builder = new Actions(driver);
+      builder.moveToElement(element, 0, 0).perform();
+    }
+    driver.findElement(By.cssSelector(".col-md-4:nth-child(2)")).click();
+    {
+      WebElement element = driver.findElement(By.id("btnAdjuntar"));
+      Actions builder = new Actions(driver);
+      builder.moveToElement(element).perform();
+    }
+    driver.findElement(By.id("btnAdjuntar")).click();
+    {
+      WebElement element = driver.findElement(By.tagName("body"));
+      Actions builder = new Actions(driver);
+      builder.moveToElement(element, 0, 0).perform();
+    }
+    driver.findElement(By.id("btnAdjuntar")).click();
+    driver.findElement(By.id("btnAdjuntar")).click();
+    driver.findElement(By.id("btnAdjuntar")).sendKeys(Keys.ENTER);
+    {
+      WebElement element = driver.findElement(By.linkText("RELI_Creacion_contrato__Id_70320220610102033.pdf"));
+      Actions builder = new Actions(driver);
+      builder.moveToElement(element).perform();
+    }
+    {
+      WebElement element = driver.findElement(By.tagName("body"));
+      Actions builder = new Actions(driver);
+      builder.moveToElement(element, 0, 0).perform();
+    }
+    driver.findElement(By.id("files")).sendKeys(Keys.ENTER);
+    {
+      WebElement element = driver.findElement(By.tagName("body"));
+      Actions builder = new Actions(driver);
+      builder.moveToElement(element, 0, 0).perform();
+    }
+    {
+      WebElement element = driver.findElement(By.id("btnAdjuntar"));
+      Actions builder = new Actions(driver);
+      builder.moveToElement(element).perform();
+    }
+    {
+      WebElement element = driver.findElement(By.tagName("body"));
+      Actions builder = new Actions(driver);
+      builder.moveToElement(element, 0, 0).perform();
+    }
+    driver.findElement(By.id("btnSiguiente")).click();
+    {
+      WebElement element = driver.findElement(By.id("btnSiguiente"));
+      Actions builder = new Actions(driver);
+      builder.moveToElement(element).perform();
+    }
+    {
+      WebElement element = driver.findElement(By.tagName("body"));
+      Actions builder = new Actions(driver);
+      builder.moveToElement(element, 0, 0).perform();
+    }
+    driver.findElement(By.id("btnSiguiente")).click();
+    driver.findElement(By.cssSelector(".text-white:nth-child(2)")).click();
+   // driver.switchTo().window(vars.get("root").toString());
+  }
+
 		
 		
 		
@@ -110,5 +297,4 @@ public class pruebaContribuyente {
 
 	
 	
-	
-}
+
