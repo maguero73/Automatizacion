@@ -130,13 +130,15 @@ public class pruebaContribuyente {
 	driver.findElement(By.id("rbUrbano")).click();
 	Thread.sleep(2000);
    // driver.findElement(By.id("modalMensajeBtnOK")).click();
-    Thread.sleep(2000);
+    Thread.sleep(1000);
     driver.findElement(By.id("rbUrbano")).click();
-    Thread.sleep(2000);
+    Thread.sleep(1000);
     driver.findElement(By.id("rbSubLocacionSi")).click();
-    Thread.sleep(2000);
-    driver.findElement(By.id("btnSiguiente")).click();
+    Thread.sleep(1000);
+   // driver.findElement(By.id("btnSiguiente")).click();
+    Thread.sleep(1000);
     driver.findElement(By.id("rbLocador")).click();
+    Thread.sleep(1000);
     driver.findElement(By.id("rbEnNombrePropio")).click();
     driver.findElement(By.id("btnSiguiente")).click();
     driver.findElement(By.cssSelector("#btnNuevoAgregarLocador > .fa")).click();
@@ -152,15 +154,19 @@ public class pruebaContribuyente {
       Actions builder = new Actions(driver);
       builder.moveToElement(element, 0, 0).perform();
     }
-    driver.findElement(By.id("btnSiguiente")).click();
+  //  driver.findElement(By.id("btnSiguiente")).click();
     driver.findElement(By.id("rbResidenteNo")).click();
     driver.findElement(By.id("txtCuitResidente")).click();
     driver.findElement(By.id("txtCuitResidente")).click();
     driver.findElement(By.id("txtCuitResidente")).sendKeys("27111141776");
     driver.findElement(By.id("btnAgregarInquilino")).click();
+    Thread.sleep(1000);
     driver.findElement(By.id("btnAgregarInquilino")).click();
+    Thread.sleep(1000);
     driver.findElement(By.id("btnSiguiente")).click();
+    Thread.sleep(1000);
     driver.findElement(By.id("btnSiguiente")).click();
+    Thread.sleep(1000);
     driver.findElement(By.id("txtCalle")).click();
     driver.findElement(By.id("txtCalle")).sendKeys("peron");
     driver.findElement(By.id("txtNumero")).sendKeys("777");
@@ -223,6 +229,7 @@ public class pruebaContribuyente {
     driver.findElement(By.id("txtValorMonedaElegida")).click();
     driver.findElement(By.id("txtValorMonedaElegida")).sendKeys("5000");
     driver.findElement(By.id("btnAgregarModalidad")).click();
+    Thread.sleep(1000);
     {
       WebElement element = driver.findElement(By.id("btnAdjuntar"));
       Actions builder = new Actions(driver);
@@ -234,6 +241,8 @@ public class pruebaContribuyente {
       builder.moveToElement(element, 0, 0).perform();
     }
     driver.findElement(By.cssSelector(".col-md-4:nth-child(2)")).click();
+    Thread.sleep(1000);
+    
     {
       WebElement element = driver.findElement(By.id("btnAdjuntar"));
       Actions builder = new Actions(driver);
