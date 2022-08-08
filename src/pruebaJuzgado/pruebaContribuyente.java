@@ -120,6 +120,13 @@ public class pruebaContribuyente {
 	//driver.close();
 	driver.get("https://srvrome.homo.afip.gob.ar/fiscalizacion/reli/app/SelectUsuario.aspx");
 	Thread.sleep(2000);
+	
+	//psdbComponent.clickDocumentLink();
+    ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+    driver.switchTo().window(tabs2.get(1));
+    driver.close();
+    driver.switchTo().window(tabs2.get(0));
+	
 	((JavascriptExecutor)driver).executeScript("alert('Test')");
 	Thread.sleep(2000);
 	driver.switchTo().alert().accept();
