@@ -250,7 +250,7 @@ public class pruebaContribuyente {
     Thread.sleep(1000);
     driver.findElement(By.id("btnAgregarModalidad")).click();
     
-    //HACE CLIC EN BOTON ADJUNTAR
+    
    // driver.findElement(By.cssSelector(".col-md-4:nth-child(2)")).click();
     Thread.sleep(1000);
 
@@ -260,10 +260,11 @@ public class pruebaContribuyente {
     
 		
 		//upload_file.sendKeys("D:\\DATOS\\Laboral\\Funcional\\RELI\\RELI_Modificacion_Adenda2__Id_22720210319115339.pdf");
-		
+  //HACE CLIC EN BOTON ADJUNTAR
     WebElement upload = driver.findElement(adjunto_pageLocator);
     upload.click();
     Thread.sleep(1000);
+    
     try {
     	String[] commands = new String[]{}; // Location of the autoit executable
     	commands = new String[] {"D:\\DATOS\\PhotoUpload.exe"};
