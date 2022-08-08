@@ -121,20 +121,22 @@ public class pruebaContribuyente {
 	driver.get("https://srvrome.homo.afip.gob.ar/fiscalizacion/reli/app/SelectUsuario.aspx");
 	Thread.sleep(2000);
 	
-	//psdbComponent.clickDocumentLink();
+	
     ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
     driver.switchTo().window(tabs2.get(1));
     driver.close();
     driver.switchTo().window(tabs2.get(0));
 	
+    /*
 	((JavascriptExecutor)driver).executeScript("alert('Test')");
 	Thread.sleep(2000);
 	driver.switchTo().alert().accept();
 	Thread.sleep(2000);
 	driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
 	Thread.sleep(2000);
-	//String selectLinkOpeninNewTab = Keys.chord(Keys.CONTROL,Keys.RETURN); 
-	//driver.findElement(By.linkText("https://srvrome.homo.afip.gob.ar/fiscalizacion/reli/app/SelectUsuario.aspx")).sendKeys(selectLinkOpeninNewTab);
+	String selectLinkOpeninNewTab = Keys.chord(Keys.CONTROL,Keys.RETURN); 
+	driver.findElement(By.linkText("https://srvrome.homo.afip.gob.ar/fiscalizacion/reli/app/SelectUsuario.aspx")).sendKeys(selectLinkOpeninNewTab);
+	*/
 	driver.findElement(falsoelseLocator).click();
 	Thread.sleep(2000);
 	driver.get("https://srvrome.homo.afip.gob.ar/fiscalizacion/reli/app/contrato/DeclaracionContrato.aspx");
@@ -144,9 +146,8 @@ public class pruebaContribuyente {
 	if(driver.findElement(btn_contrato_nuevoLocator).isDisplayed())
 	driver.findElement(btn_contrato_nuevoLocator).click();
 	else
-	Thread.sleep(1000);
+	Thread.sleep(500);
 	driver.findElement(By.id("rbUrbano")).click();
-	Thread.sleep(2000);
    // driver.findElement(By.id("modalMensajeBtnOK")).click();
     Thread.sleep(1000);
     driver.findElement(By.id("rbUrbano")).click();
@@ -271,7 +272,8 @@ public class pruebaContribuyente {
     WebElement upload = driver.findElement(adjunto_pageLocator);
     upload.click();
     Thread.sleep(1000);
-    
+  
+  //AUTOCOMPLETAMOS CON PATH Y ENTER VENTANA EMERGENTE DE WINDOWS UPLOAD  
     try {
     	String[] commands = new String[]{}; // Location of the autoit executable
     	commands = new String[] {"D:\\DATOS\\PhotoUpload.exe"};
@@ -309,7 +311,7 @@ public class pruebaContribuyente {
 		//driver.findElement(By.id("file-submit")).click();
 		
 		
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		
 ////////////////////////////// ///////////////////////////////		
 	//	String text = driver.findElement(By.id("uploaded-files")).getText();
@@ -325,13 +327,14 @@ public class pruebaContribuyente {
 
    // driver.findElement(By.id("btnSiguiente")).click();
     //Thread.sleep(1000);
-
+	
     driver.findElement(By.id("btnSiguiente")).click();
-    Thread.sleep(2000);
+    Thread.sleep(3000);
     //driver.findElement(By.cssSelector(".text-white:nth-child(2)")).click();
    // driver.switchTo().window(vars.get("root").toString());
+    
     driver.findElement(By.id("btnSiguiente")).click();
-    Thread.sleep(1000);
+    Thread.sleep(2000);
     driver.findElement(descargarLocator).click();
     
   }
